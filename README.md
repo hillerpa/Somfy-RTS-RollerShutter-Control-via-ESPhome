@@ -44,4 +44,22 @@ sudo  rtl_fm -M am -f 433.42M -s 270K | converters/am_to_ook -d 10 -t 2000 -  | 
 I use the NodeMCU V3 which have the same config as the D1 mini. and the new TI-CC1101 design:
 ![grafik](https://user-images.githubusercontent.com/94315369/223201040-6bc8d93c-c56f-41c4-9ee1-19ed87922f40.png)
 
+| ESP8266      | TI CC1101 |
+| ----------- | ----------- |
+| D1      | GD00 3       |
+| D2   | GD02 8        |
+| D5   | SCK 5        |
+| 3V3   | VCC 2        |
+| D7   | MOSI 6        |
+| D6   | MISO 7        |
+| D8   | CSN/CKN 4        |
+| GND   | GND 1        |
+
+
+## ESPHome Software Config
+* Install in HomeAssistant Settings->Addon -> ESPHome 
+* Connect ESP8266 to the PC for initial Flashing
+  * I used https://web.esphome.io/ with initial Flashing to get the ESP8266 into HomeAssistant
+
+
 
