@@ -1,15 +1,27 @@
 esphome:
-  name: somfy
-  platform: ESP32
-  board: nodemcu-32s
+  name: "esphome-somfy"
+  friendly_name: "esphome-somfy"
+  platform: ESP8266
+  board: nodemcuv2
   libraries:
     - EEPROM
     - SPI
     - SmartRC-CC1101-Driver-Lib@2.5.6
     - Somfy_Remote_Lib@0.4.1
   includes:
-    - somfy_secrets.h
-    - somfy_cover.h
+    - somfy/somfy_secrets.h
+    - somfy/somfy_cover.h
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "key="
+
+ota:
+  password: "password"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -21,16 +33,6 @@ wifi:
     password: !secret fallback_password
 
 captive_portal:
-
-# Enable logging
-logger:
-
-# Enable Home Assistant API
-api:
-  password: !secret api_password
-
-ota:
-  password: !secret ota_password
 
 web_server:
   port: 80
@@ -46,8 +48,11 @@ cover:
   - platform: custom
     lambda: |-
       auto somfy_remote = new SomfyESPRemote();
-      somfy_remote->add_cover("somfy", "badezimmer", SOMFY_REMOTE_BADEZIMMER);
-      somfy_remote->add_cover("somfy", "kinderzimmer", SOMFY_REMOTE_KINDERZIMMER);
+      somfy_remote->add_cover("somfy", "Küche", SOMFY_REMOTE_KÜCHE);
+      somfy_remote->add_cover("somfy", "Esszimmer Fenster", SOMFY_REMOTE_ESSZIMMER_FENSTER);
+      somfy_remote->add_cover("somfy", "Esszimmer Terassentür", SOMFY_REMOTE_ESSZIMMER_TERRASSENTÜR);
+      somfy_remote->add_cover("somfy", "Wohnzimmer Terassentür", SOMFY_REMOTE_WOHNZIMMER_TERRASSENTÜR);
+      somfy_remote->add_cover("somfy", "Wohnzimmer Fenster", SOMFY_REMOTE_WOHNZIMMER_FENSTER);
       App.register_component(somfy_remote);
       return somfy_remote->covers;
 
@@ -78,3 +83,4 @@ switch:
     turn_on_action:
       - lambda: |-
           ((SomfyESPCover*)id(somfy2))->stop();
+    
