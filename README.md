@@ -39,20 +39,20 @@ sudo  rtl_fm -M am -f 433.42M -s 270K | converters/am_to_ook -d 10 -t 2000 -  | 
 * [TI-CC1101](https://de.aliexpress.com/item/1005002074380868.html?spm=a2g0o.productlist.main.1.495e384d7G3QKO&algo_pvid=842d5d78-f38d-4464-9a5d-f1b6ad3076e7&algo_exp_id=842d5d78-f38d-4464-9a5d-f1b6ad3076e7-0&pdp_ext_f=%7B%22sku_id%22%3A%2212000025798608305%22%7D&pdp_npi=3%40dis%21EUR%214.58%213.16%21%21%21%21%21%40211bf49716781278115932071d0720%2112000025798608305%21sea%21DE%213245007737&curPageLogUid=uNAAKaRTs9De)
 
 ## Wiring
-![grafik](https://user-images.githubusercontent.com/94315369/223200295-917fbe5e-1ba0-48bc-bf10-deb68bea5665.png)
+![grafik](https://user-images.githubusercontent.com/94315369/228869506-c1ff1c20-7c00-40ae-8f1c-30a03cb7470a.png)
 
 I use the NodeMCU V3 which have the same config as the D1 mini. and the new TI-CC1101 design:
 ![grafik](https://user-images.githubusercontent.com/94315369/223201040-6bc8d93c-c56f-41c4-9ee1-19ed87922f40.png)
 
-| ESP8266      | TI CC1101 |
+| ESP32      | TI CC1101 |
 | ----------- | ----------- |
-| D1      | GD00 3       |
-| D2   | GD02 8        |
-| D5   | SCK 5        |
+| GPIO2      | GD00 3       |
+| GPIO4   | GD02 8        |
+| GPIO18   | SCK 5        |
 | 3V3   | VCC 2        |
-| D7   | MOSI 6        |
-| D6   | MISO 7        |
-| D8   | CSN/CKN 4        |
+| GPIO23   | MOSI 6        |
+| GPIO19   | MISO 7        |
+| GPIO5   | CSN/CKN 4        |
 | GND   | GND 1        |
 
 
